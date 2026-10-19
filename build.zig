@@ -3,7 +3,7 @@ const zon = @import("build.zig.zon");
 
 pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
-    const optimize = b.standardOptimizeOption(.{});
+    const optimize = b.standardOptimizeOption(.{}) orelse .debug;
     const enable_tracy = b.option(bool, "tracy", "Enable Tracy profiling") orelse false;
     const version = b.option(
         []const u8,
